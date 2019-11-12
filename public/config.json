@@ -1,0 +1,73 @@
+{
+    "workflowApiVersion": "1.1",
+    "metaData": {
+        "icon": "images/iconMedium.png",
+        "iconSmall": "images/iconSmall.png",
+        "category": "message"
+    },
+    "type": "REST",
+    "lang": {
+        "en-US": {
+         "name": "Parent Email",
+          "description": "Send Email To Parent That Relates To Student",
+          "step1Label": "Configure Activity"
+        }
+    },
+    "arguments": {
+        "execute": {
+           "inArguments":[
+                {"subscriberKey":"{{Event.SOMEEVENTKEY.\"SubscriberKey\"}}"},
+                {"prop":"{{Event.SOMEEVENTKEY.\"Prop1\"}}"}
+            ],
+          "outArguments": [],
+          "url": "https://your-app-url.herokuapp.com/journeybuilder/execute",
+           "verb": "POST",
+            "body": "",
+            "header": "",
+            "format": "json",
+            "useJwt": true,
+            "timeout": 10000
+        }
+    },
+    "configurationArguments": {
+      "applicationExtensionKey": "YOUR APP EXTENSION KEY FROM PACKAGE",
+      "save": {
+        "url": "https://your-app-url.herokuapp.com/journeybuilder/save",
+          "verb": "POST",
+        "useJwt": true
+       },
+       "publish": {
+        "url": "https://your-app-url.herokuapp.com/journeybuilder/publish",
+           "verb": "POST",
+        "useJwt": true
+       },
+      "stop": {
+        "url": "https://your-app-url.herokuapp.com/journeybuilder/stop",
+           "verb": "POST",
+        "useJwt": true
+      },
+      "validate": {
+        "url": "https://your-app-url.herokuapp.com/journeybuilder/validate",
+        "verb": "POST",
+        "useJwt": true
+      }
+    },
+    "wizardSteps": [
+        { "label": "Configure Activity", "key": "step1" }
+    ],
+    "userInterfaces": {
+        "configModal": {
+            "height": 640,
+            "width": 900,
+          "fullscreen": false
+        }
+    },
+    "schema": {
+        "arguments": {
+            "execute": {
+                "inArguments": [],
+                "outArguments": []
+            }
+        }
+    }
+}
