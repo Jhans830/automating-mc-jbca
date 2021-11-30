@@ -3,51 +3,51 @@
     "metaData": {
         "icon": "images/iconMedium.png",
         "iconSmall": "images/iconSmall.png",
-        "category": "message"
+        "category": "custom"
     },
     "type": "REST",
     "lang": {
         "en-US": {
-         "name": "Parent Email",
-          "description": "Send Email To Parent That Relates To Student",
+         "name": "CloudPage POST",
+          "description": "Sample Journey Builder Custom Activity",
           "step1Label": "Configure Activity"
         }
     },
     "arguments": {
         "execute": {
            "inArguments":[
-                {"subscriberKey":"{{Event.SOMEEVENTKEY.\"SubscriberKey\"}}"},
-                {"prop":"{{Event.SOMEEVENTKEY.\"Prop1\"}}"}
+                {"subscriberKey":"{{Contact.Key}}"}
             ],
           "outArguments": [],
-          "url": "https://your-app-url.herokuapp.com/journeybuilder/execute",
+          "url": "https://automating-mc-jbca.herokuapp.com/journeybuilder/execute",
            "verb": "POST",
             "body": "",
             "header": "",
             "format": "json",
             "useJwt": true,
-            "timeout": 10000
+            "timeout": 10000,
+            "retryCount": 5,
+            "retryDelay": 100
         }
     },
     "configurationArguments": {
-      "applicationExtensionKey": "YOUR APP EXTENSION KEY FROM PACKAGE",
       "save": {
-        "url": "https://your-app-url.herokuapp.com/journeybuilder/save",
+        "url": "https://automating-mc-jbca.herokuapp.com/journeybuilder/save",
           "verb": "POST",
         "useJwt": true
        },
        "publish": {
-        "url": "https://your-app-url.herokuapp.com/journeybuilder/publish",
+        "url": "https://automating-mc-jbca.herokuapp.com/journeybuilder/publish",
            "verb": "POST",
         "useJwt": true
        },
       "stop": {
-        "url": "https://your-app-url.herokuapp.com/journeybuilder/stop",
+        "url": "https://automating-mc-jbca.herokuapp.com/journeybuilder/stop",
            "verb": "POST",
         "useJwt": true
       },
       "validate": {
-        "url": "https://your-app-url.herokuapp.com/journeybuilder/validate",
+        "url": "https://automating-mc-jbca.herokuapp.com/journeybuilder/validate",
         "verb": "POST",
         "useJwt": true
       }

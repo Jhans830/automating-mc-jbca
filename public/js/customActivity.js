@@ -36,8 +36,8 @@ define([
         console.log(data);
         if (data) {
             payload = data;
-            var setCustKey = payload['arguments'].execute.inArguments[0].customerKey;
-            $('#custKey').val(setCustKey);
+            var setcpURL = payload['arguments'].execute.inArguments[0].customerKey;
+            $('#cpURL').val(setcpURL);
         }
 
         var hasInArguments = Boolean(
@@ -76,12 +76,11 @@ define([
 
     function save() {
         // grab TSD customer key from activity on save
-        var custKey = $('#custKey').val();
+        var cpURL = $('#cpURL').val();
         payload['arguments'].execute.inArguments = [{
             "tokens": authTokens,
             "subscriberKey": "{{Event." + eventDefinitionKey + ".\"SubscriberKey\"}}",
-            "prop": "{{Event." + eventDefinitionKey + ".\"Prop1\"}}",
-            "customerKey": custKey
+            "cloudpageURL": cpURL
         }];
         payload['metaData'].isConfigured = true;
         console.log(payload);

@@ -1,7 +1,7 @@
 {
-  "name": "send-external-email-activity",
+  "name": "automating-mc-jbca",
   "version": "1.0.0",
-  "description": "Send External Email From Journey Builder",
+  "description": "Automating Marketing Cloud Journey Builder Activity",
   "engines": {
     "node": "6.11.1"
   },
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://git.heroku.com/sheltered-taiga-78248.git"
+    "url": "git+https://github.com/Jhans830/automating-mc-jbca.git"
   },
   "keywords": [
     "journey",
@@ -18,12 +18,12 @@
     "salesforce marketing cloud",
     "heroku"
   ],
-  "author": "ACC",
+  "author": "Jason Hanshaw",
   "license": "ISC",
   "bugs": {
-    "url": "https://git.heroku.com/sheltered-taiga-78248.git"
+    "url": "https://github.com/Jhans830/automating-mc-jbca.git"
   },
-  "homepage": "https://git.heroku.com/sheltered-taiga-78248.git",
+  "homepage": "https://github.com/Jhans830/automating-mc-jbca.git",
   "dependencies": {
     "body-parser": "^1.18.2",
     "bower": "^1.8.0",
