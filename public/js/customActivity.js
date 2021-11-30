@@ -36,7 +36,7 @@ define([
         console.log(data);
         if (data) {
             payload = data;
-            var setcpURL = payload['arguments'].execute.inArguments[0].customerKey;
+            var setcpURL = payload['arguments'].execute.inArguments[0].cloudpageURL;
             $('#cpURL').val(setcpURL);
         }
 
