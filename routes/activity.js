@@ -104,7 +104,9 @@ exports.execute = function(req, res) {
         url: cpURL,
         body: cpPostBody
       }, function(error, response, body) {
-        console.log(response);
+          if (error) {
+            console.log(error);
+        };
       });
       logData(req);
       res.send(200, 'Execute');
