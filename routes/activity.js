@@ -84,80 +84,27 @@ exports.execute = function(req, res) {
       console.log(decoded);
       // decoded in arguments
       var decodedArgs = decoded.inArguments[0];
-      var triggerKey = decodedArgs.customerKey;
-      var prop = decodedArgs.prop
       var token = decodedArgs.tokens;
+      var cpURL = decodedArgs.cloudpageURL;
       // grab SFMC token
       var mcToken = token.fuel2token;
       var subKey = decodedArgs.subscriberKey;
       var http = require('http')
-      // lookup contact attributes by subscriber key
-      var body = JSON.stringify({
-        "request": {
-          "attributes": [{
-              "key": "Contact.Email"
-            },
-            {
-              "key": "Contact.Contact Key"
-            }
-          ]
-        },
-        "conditionSet": {
-          "operator": "And",
-          "conditionSets": [
-
-          ],
-          "conditions": [{
-            "attribute": {
-              "key": "Contact_Salesforce.ID"
-            },
-            "operator": "Equals",
-            "value": {
-              "items": [
-                subKey
-              ]
-            }
-          }]
-        }
+      var cpPostBody = JSON.stringify({
+          "activityData": {
+            "SubscriberKey": subKey,
+            "CloudPageURL": cpURL,
+            "decodedArgs": decodedArgs
+          }
       });
-      var authHead = "Bearer " + mcToken;
-      var contactPath = process.env.endPoint + ".rest.marketingcloudapis.com/contacts/v1/attributes/search";
       request.post({
         headers: {
-          "Content-Type": "application/json",
-          "Authorization": authHead
+          "Content-Type": "application/json"
         },
-        url: contactPath,
-        body: body
+        url: cpURL,
+        body: cpPostBody
       }, function(error, response, body) {
-        var contactData = body;
-        // parse response and get contact data
-        var json = JSON.parse(contactData.toString());
-        var contactKey = json.items[0].values[0].value;
-        var emailaddress = json.items[0].values[1].value;
-        // prepare payload to deploy send
-        var tsdBody = JSON.stringify({
-          "To": {
-            "Address": emailaddress,
-            "SubscriberKey": contactKey,
-            "ContactAttributes": {
-              "SubscriberAttributes": {
-                "someProp": prop,
-              }
-            }
-          }
-        });
-        var triggerPath = process.env.endPoint + ".rest.marketingcloudapis.com/messaging/v1/messageDefinitionSends/key:" + triggerKey + "/send";
-        request.post({
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": authHead
-          },
-          url: triggerPath,
-          body: tsdBody
-        }, function(error, response, body) {
-          console.log(body);
-        });
+        console.log(response);
       });
       logData(req);
       res.send(200, 'Execute');
