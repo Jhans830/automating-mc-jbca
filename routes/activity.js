@@ -82,12 +82,8 @@ exports.execute = function(req, res) {
     }
     if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
       console.log(decoded);
-      // decoded in arguments
       var decodedArgs = decoded.inArguments[0];
-      var token = decodedArgs.tokens;
       var cpURL = decodedArgs.cloudpageURL;
-      // grab SFMC token
-      var mcToken = token.fuel2token;
       var subKey = decodedArgs.subscriberKey;
       var http = require('http')
       var cpPostBody = JSON.stringify({
