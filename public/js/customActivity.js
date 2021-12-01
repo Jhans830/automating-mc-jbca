@@ -33,15 +33,6 @@ define([
         });
     }
 
-    function onGetTokens(tokens) {
-        console.log(tokens);
-        authTokens = tokens;
-    }
-
-    function onGetEndpoints(endpoints) {
-        console.log(endpoints);
-    }
-
     function save() {
         // grab TSD customer key from activity on save
         var cpURL = $('#cpURL').val();
