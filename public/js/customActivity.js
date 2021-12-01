@@ -6,9 +6,7 @@ define([
     'use strict';
 
     var connection = new Postmonger.Session();
-    var authTokens = {};
     var payload = {};
-    var eventDefinitionKey;
     $(window).ready(onRender);
 
     connection.on('initActivity', initialize);
@@ -28,7 +26,6 @@ define([
     }
 
     function save() {
-        // grab TSD customer key from activity on save
         var cpURL = $('#cpURL').val();
         payload['arguments'].execute.inArguments = [{
             "subscriberKey": "{{Contact.Key}}",

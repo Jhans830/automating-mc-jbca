@@ -73,6 +73,7 @@ exports.save = function(req, res) {
  */
 exports.execute = function(req, res) {
   // example on how to decode JWT
+   console.log(req.body);
   JWT(req.body, process.env.jwtSecret, (err, decoded) => {
 
     // verification error -> unauthorized request
@@ -81,7 +82,6 @@ exports.execute = function(req, res) {
       return res.status(401).end();
     }
     if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
-      console.log(decoded);
       var decodedArgs = decoded.inArguments[0];
       var cpURL = decodedArgs.cloudpageURL;
       var subKey = decodedArgs.subscriberKey;
