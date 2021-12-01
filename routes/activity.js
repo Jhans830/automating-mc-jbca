@@ -77,7 +77,7 @@ exports.execute = function(req, res) {
   const buf = req.body;
   const headers = req.headers;
   console.log(buf.toString());
-  console.log(headers.toString());
+  console.log(JSON.stringify(headers));
   console.log(JSON.stringify(buf));
   JWT(req.body, process.env.jwtSecret, (err, decoded) => {
 
