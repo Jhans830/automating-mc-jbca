@@ -25,12 +25,6 @@ define([
             var setcpURL = payload['arguments'].execute.inArguments[0].cloudpageURL;
             $('#cpURL').val(setcpURL);
         }
-
-        connection.trigger('updateButton', {
-            button: 'next',
-            text: 'done',
-            visible: true
-        });
     }
 
     function save() {
