@@ -74,8 +74,8 @@ exports.save = function(req, res) {
 exports.execute = function(req, res) {
   // example on how to decode JWT
     console.log("req");
-   console.log(req.body);
-   console.log(JSON.stringify(req.body));
+  const buf = Buffer.from(req.body);
+  console.log(buf.toString());
   JWT(req.body, process.env.jwtSecret, (err, decoded) => {
 
     // verification error -> unauthorized request
