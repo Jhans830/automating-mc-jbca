@@ -76,6 +76,13 @@ exports.execute = function(req, res) {
     console.log("req");
    console.log(req);
    console.log(JSON.stringify(req));
+  JWT(req.body, process.env.jwtSecret, (err, decoded) => {
+
+    // verification error -> unauthorized request
+    if (err) {
+      console.error(err);
+      return res.status(401).end();
+    }
     if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
       var decodedArgs = decoded.inArguments[0];
       var cpURL = decodedArgs.cloudpageURL;
