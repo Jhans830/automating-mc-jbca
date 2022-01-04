@@ -12,7 +12,10 @@ define([
     connection.on('initActivity', initialize);
     connection.on('clickedNext', save);
 
-
+    connection.on("requestedTokens", onGetTokens);
+    function onGetTokens(tokens) {
+      console.log(tokens);
+    }
     function onRender() {
         connection.trigger('ready');
     }
